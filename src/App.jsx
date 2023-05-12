@@ -2,17 +2,24 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const title = "Welcome back react js developer";
+  const person = {
+    name: "adibur",
+    age: 23,
+  };
+  const link = "https://www.google.com";
   return (
-    <>
-      <div>
-        <h1>Adibur rahman</h1>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
+    <div className="App">
+      <div className="content">
+        <h1>{title}</h1>
+        <p>
+          My name id {person.name}. My age is {person.age}.
         </p>
+        <p>{2300}</p>
+        <a href={link}>Go Google</a>
+        <p>{Math.random() * 10}</p>
       </div>
-    </>
+    </div>
   );
 }
 
