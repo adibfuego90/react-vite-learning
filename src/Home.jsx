@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
+  const [age, setAge] = useState(90);
   const [blogs, setBlogs] = useState([
     {
       title: "My name is adib",
@@ -26,9 +27,16 @@ const Home = () => {
     const newBlogs = blogs.filter((blog) => blog.id !== id);
     setBlogs(newBlogs);
   };
+
+  useEffect(() => {
+    console.log("USE Effect hook");
+  }, [age]);
+
   return (
     <div className="home">
       <BlogList blogs={blogs} title="All Blog" handleDelete={handleDelete} />
+      <button onClick={() => setAge(121)}>Change Name</button>
+      <p>My name is {age}</p>
     </div>
   );
 };
