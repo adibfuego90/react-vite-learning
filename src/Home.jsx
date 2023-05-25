@@ -1,42 +1,27 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
-  const [age, setAge] = useState(90);
-  const [blogs, setBlogs] = useState([
-    {
-      title: "My name is adib",
-      body: "lorem ipsum ...Home....",
-      author: "adib",
-      id: 1,
-    },
-    {
-      title: "My name is adib",
-      body: "lorem ipsum ...Home....",
-      author: "adib",
-      id: 2,
-    },
-    {
-      title: "My name is adib",
-      body: "lorem ipsum ...Home....",
-      author: "adib",
-      id: 3,
-    },
-  ]);
-  const handleDelete = (id) => {
-    const newBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlogs(newBlogs);
-  };
+  const [blogs, setBlogs] = useState(null);
+  const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
-    console.log("USE Effect hook");
-  }, [age]);
+    setTimeout(() => {
+      fetch("http://localhost:8000/blogs")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setIsPending(false);
+          setBlogs(data);
+        });
+    }, 1000);
+  }, []);
 
   return (
     <div className="home">
-      <BlogList blogs={blogs} title="All Blog" handleDelete={handleDelete} />
-      <button onClick={() => setAge(121)}>Change Name</button>
-      <p>My name is {age}</p>
+      {isPending && <div>Loading...</div>}
+      {blogs && <BlogList blogs={blogs} />}
     </div>
   );
 };
