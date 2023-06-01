@@ -1,18 +1,6 @@
 {
   "blogs": [
     {
-      "title": "First Blog",
-      "body": "lorem is not a good guy to communicate with him .But i like this man because he is honest man",
-      "author": "Adib",
-      "id": 1
-    },
-    {
-      "title": "second Blog",
-      "body": "lorem is not a good guy to communicate with him .But i like this man because he is honest man",
-      "author": "Adib",
-      "id": 2
-    },
-    {
       "title": "JS all in one ",
       "body": "Js is a good for web developer they can use it?",
       "author": "Adib",
